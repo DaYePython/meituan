@@ -21,6 +21,7 @@
                 @toList="toListHandle(item)"
             > </type-item>
         </div>
+        <!-- 分割线 -->
         <cross-line></cross-line>
     </div>
 </template>
