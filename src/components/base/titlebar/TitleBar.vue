@@ -28,20 +28,20 @@
             color #333
             // 引用父级选择器 即span
             &::before 
-                content ''
+                content ""
                 position absolute
                 top: .4rem
                 left -.9rem
                 width .6rem
-                border .02rem solid #333
-                transfrom scale(0.5)
+                border-top .02rem solid #333
+                transfrom scaleY(0.5)
             &::after
-                content ''
+                content ""
                 position absolute
                 top: .4rem
-                left -.9rem
+                right -.9rem
                 width .6rem
-                border .02rem solid #333
-                transfrom scale(0.5)
+                border-top .02rem solid #333
+                transfrom scaleY(0.5)
 </style>
 

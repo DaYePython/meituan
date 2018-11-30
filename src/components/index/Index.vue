@@ -25,7 +25,7 @@
         <cross-line></cross-line>
         
         <div class="nearby">
-            <title-bar title="附近商家"></title-bar>
+            <title-bar txt="附近商家"></title-bar>
             <seller-list-item
                 v-for="item of indexList"
                 :key="item.name"
