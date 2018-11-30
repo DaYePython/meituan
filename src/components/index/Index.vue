@@ -23,27 +23,47 @@
         </div>
         <!-- 分割线 -->
         <cross-line></cross-line>
+        
+        <div class="nearby">
+            <title-bar title="附近商家"></title-bar>
+            <seller-list-item
+                v-for="item of indexList"
+                :key="item.name"
+                :data="item"
+                @toRestaurant="toRestaurantHandle"
+            ></seller-list-item>
+        </div>
     </div>
 </template>
 
 <script>
+    // common compoment
     import TypeItem from 'base/typeitem/TypeItem'
     import CrossLine from 'base/crossline/CrossLine'
+    import TitleBar from 'base/titlebar/TitleBar'
+    import SellerListItem from 'base/sellerlistitem/SellerListItem'
+
     export default {
         name: 'Index',
         components: {
             TypeItem,
-            CrossLine
+            CrossLine,
+            TitleBar,
+            SellerListItem
         },
         methods: {
             toListHandle(item){
                 // console.log(item.txt)
                 // TODO restaurnt_list
                 console.log("I want to gt to " + item.txt)
+            },
+            toRestaurantHandle () {
+                console.log("i want to Restaurant")
             }
         },
         data () {
             return {
+                indexList: [],
                 swipeData: [
                     {
                         id: "000",
