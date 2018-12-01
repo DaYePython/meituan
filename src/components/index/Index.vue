@@ -43,6 +43,7 @@
     import TitleBar from 'base/titlebar/TitleBar'
     import SellerListItem from 'base/sellerlistitem/SellerListItem'
 
+    import axios from 'axios'
     export default {
         name: 'Index',
         components: {
@@ -60,6 +61,9 @@
             toRestaurantHandle () {
                 console.log("i want to Restaurant")
             }
+        },
+        mounted () {
+            axios.get('api/seller.json')
         },
         data () {
             return {
