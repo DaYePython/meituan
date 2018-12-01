@@ -28,7 +28,7 @@
             <title-bar txt="附近商家"></title-bar>
             <seller-list-item
                 v-for="item of indexList"
-                :key="item.name"
+                :key="item.id"
                 :data="item"
                 @toRestaurant="toRestaurantHandle"
             ></seller-list-item>
@@ -43,7 +43,9 @@
     import TitleBar from 'base/titlebar/TitleBar'
     import SellerListItem from 'base/sellerlistitem/SellerListItem'
 
+    // 
     import axios from 'axios'
+
     export default {
         name: 'Index',
         components: {
@@ -53,6 +55,22 @@
             SellerListItem
         },
         methods: {
+            getIndexList () {
+                axios.get('api/index-list.json')
+                .then(this.getIndexListSucc)
+                .catch((err) => {
+                    console.log(err)
+                })
+            },
+            getIndexListSucc (res) {
+                const ret = res.data
+                if(ret.code === "200" && ret.data){
+                    const data = ret.data
+                    // console.log(data)
+                    this.indexList = data.poilist
+                    // console.log(this.indexList)
+                }
+            },
             toListHandle(item){
                 // console.log(item.txt)
                 // TODO restaurnt_list
@@ -63,7 +81,7 @@
             }
         },
         mounted () {
-            axios.get('api/seller.json')
+            this.getIndexList()
         },
         data () {
             return {
@@ -71,48 +89,48 @@
                 swipeData: [
                     {
                         id: "000",
-                        pic: require('img/index/swipe/bannertemp.e8a6fa63.jpg')
+                        pic: require('img/index/swipe/bannertemp.e8a6fa63.webp')
                     }
                 ],
                 types: [
                     {
                         id: "002",
-                        ico: require('img/index/types/types (7).png'),
+                        ico: require('img/index/types/types (7).webp'),
                         txt: '美食'
                     },
                     {
                         id: "003",
-                        ico: require('img/index/types/types (0).png'),
+                        ico: require('img/index/types/types (0).webp'),
                         txt: '美团超市'
                     },
                     {
                         id: "004",
-                        ico: require('img/index/types/types (1).png'),
+                        ico: require('img/index/types/types (1).webp'),
                         txt: '生鲜果蔬'
                     },
                     {
                         id: "005",
-                        ico: require('img/index/types/types (5).png'),
+                        ico: require('img/index/types/types (5).webp'),
                         txt: '甜点饮品'
                     },
                     {
                         id: "006",
-                        ico: require('img/index/types/types (4).png'),
+                        ico: require('img/index/types/types (4).webp'),
                         txt: '正餐优选'
                     },
                     {
                         id: "007",
-                        ico: require('img/index/types/types (2).png'),
+                        ico: require('img/index/types/types (2).webp'),
                         txt: '美团专送'
                     },
                     {
                         id: "008",
-                        ico: require('img/index/types/types (3).png'),
+                        ico: require('img/index/types/types (3).webp'),
                         txt: '能量西餐'
                     },
                     {
                         id: "009",
-                        ico: require('img/index/types/types (6).png'),
+                        ico: require('img/index/types/types (6).webp'),
                         txt: '精品小吃'
                     }
                 ],
