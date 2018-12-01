@@ -22,7 +22,7 @@ Vue.config.productionTip = false
 fastClick.attach(document.body)
 Vue.use(Mint)
 Vue.use(VueLazyload, {
-  loading: '/static/loading-bars.svg'
+  loading: 'img/lazyload/loading-bars.svg'
 })
 // Vue.use(VueAwesomeSwiper)
 /* eslint-disable no-new */
